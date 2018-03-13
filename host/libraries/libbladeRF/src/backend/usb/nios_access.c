@@ -857,3 +857,29 @@ int nios_write_trigger(struct bladerf *dev, bladerf_module module,
 
     return status;
 }
+
+int nios_read_user_register(struct bladerf *dev, uint8_t reg, uint32_t *value)
+{
+    int status;
+    uint8_t nios_id = NIOS_PKT_8x32_TARGET_USR1;
+
+    status = nios_8x32_read(dev, nios_id, reg, value);
+    if (status == 0) {
+        log_verbose("user register read value 0x%02x\n", *value);
+    }
+
+    return status;
+}
+
+int nios_write_user_register(struct bladerf *dev, uint8_t reg, uint32_t value)
+{
+    int status;
+    uint8_t nios_id = NIOS_PKT_8x32_TARGET_USR1;
+
+    status = nios_8x32_write(dev, nios_id, reg, value);
+    if (status == 0) {
+        log_verbose("user register write value 0x%02x\n",  value);
+    }
+
+    return status;
+}

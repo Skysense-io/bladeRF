@@ -1245,4 +1245,8 @@ const struct backend_fns backend_fns_usb = {
 
     FIELD_INIT(.read_trigger, nios_read_trigger),
     FIELD_INIT(.write_trigger, nios_write_trigger),
+
+    FIELD_INIT(.read_user_register, nios_read_user_register),
+    FIELD_INIT(.write_user_register, nios_write_user_register),
+
 };

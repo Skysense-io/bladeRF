@@ -190,6 +190,8 @@ struct backend_fns {
                         bladerf_trigger_signal trigger, uint8_t *val);
     int (*write_trigger)(struct bladerf *dev, bladerf_module module,
                          bladerf_trigger_signal trigger, uint8_t val);
+    int (*read_user_register) (struct bladerf *dev, uint8_t reg, uint32_t *val);
+    int (*write_user_register) (struct bladerf *dev, uint8_t reg, uint32_t val);
 };
 
 /**
