@@ -54,14 +54,15 @@ int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
         value 0xff00ff00
     */
     int rv = CLI_RET_OK;
-    int status;
-    bool ok,fpga_loaded = false;
+    int status,reg;
+    bool ok;
+    //bool fpga_loaded = false;
     //int (*f)(struct bladerf *, uint8_t, uint8_t) = NULL;
     unsigned int value;
 
     /* Exit cleanly if no device is attached */
     if (state->dev == NULL) {
-        printf("cmd_ss_trsh:  No device attached.\n");
+        printf("  cmd_ss_trsh:  No device attached.\n");
         return 0;
     }
 
@@ -70,70 +71,61 @@ int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
         state->last_lib_error = status;
         return CLI_RET_LIBBLADERF;
     } else if (status != 0) {
-        fpga_loaded = true;
-        printf("FPGA loaded: %i\n", fpga_loaded);
+        //fpga_loaded = true;
+        //printf("FPGA loaded: %i\n", fpga_loaded);
         status = 0;
-        if (status < 0) {
-            state->last_lib_error = status;
-            return CLI_RET_LIBBLADERF;
-        }
     } 
 
     /* 
     Write value to register
     */
-    if( argc == 2 ) {
-        printf("cmd_ss_trsh:  One argument: %s.\n",argv[1]);        
-
+    if( argc == 3 ) {
         /* Parse the value */
-        value = str2uint( argv[1], 0, SS_MAX_TRSH, &ok );
-        printf("Arg: %u\n", value);
+        reg = str2uint( argv[1],SS_REG_00,SS_REG_02,&ok);
+
         if( !ok ) {
             cli_err(state, argv[0],
-                    "Invalid value provided (%s)", argv[1]);
+                    "Invalid register provided (%s)", argv[1]);
+            return CLI_RET_INVPARAM;
+        }
+        value = str2uint( argv[2], 0, SS_MAX_VAL, &ok );
+        if( !ok ) {
+            cli_err(state, argv[0],
+                    "Invalid value provided (%s)", argv[2]);
             return CLI_RET_INVPARAM;
         }
 
-        status = bladerf_write_register(state->dev, SS_REG_00, (uint32_t) value);
+        status = bladerf_write_register(state->dev, reg, (uint32_t) value);
         if (status < 0) {
             state->last_lib_error = status;
             rv = CLI_RET_LIBBLADERF;
         }
+        printf("  Wrote 0x%08x to register 0x%02x \n", value, reg);
 
-        /* Write the value to the address */
-        /*
-        if( rv == CLI_RET_OK && f ) {
-            status = f( state->dev, (uint8_t)SS_REG_00, (uint8_t)value );
-            if (status < 0) {
-                state->last_lib_error = status;
-                rv = CLI_RET_LIBBLADERF;
-            } else {
-                printf( "\n  0x%2.2x: 0x%2.2x\n", address, value );
-                if (f == bladerf_lms_write) {
-                    uint8_t readback;
-                    int status = bladerf_lms_read(state->dev,
-                                                  (uint8_t)address,
-                                                  &readback);
-                    if (status == 0) {
-                        lms_reg_info(address, readback);
-                        putchar('\n'); // To be consistent with peek output 
-                    }
-                }
-            }
-        }
-        */
+
         return rv;
 
     }
     /*
     Read from register
     */
-    if (argc == 1) {
+    if (argc == 2) {
         uint32_t data=0;
-        status = bladerf_read_register(state->dev, SS_REG_00, &data);
-        if (status==0){
-            printf("cmd_ss_trsh:  %02x\n",(unsigned int)data);  
+        reg = str2uint( argv[1],SS_REG_00,SS_REG_02,&ok);
+
+        if( !ok ) {
+            cli_err(state, argv[0],
+                    "Invalid register provided (%s)", argv[1]);
+            return CLI_RET_INVPARAM;
         }
+
+        status = bladerf_read_register(state->dev, reg, &data);
+
+        if (status<0){
+            state->last_lib_error = status;
+            rv = CLI_RET_LIBBLADERF;            
+        }
+        printf("  0x%02x:  0x%08x\n",reg,(unsigned int)data);  
         return rv;      
     }
     else {
