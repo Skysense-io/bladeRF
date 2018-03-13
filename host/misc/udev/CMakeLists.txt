@@ -2,11 +2,12 @@ cmake_minimum_required(VERSION 2.8)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     SET(SYSTEM_IS_LINUX TRUE)
-    SET(UDEV_OPTION_DEFAULT ON)
+    SET(UDEV_OPTION_DEFAULT OFF)
 else()
     SET(SYSTEM_IS_LINUX FALSE)
     SET(UDEV_OPTION_DEFAULT OFF)
 endif()
+
 
 option(INSTALL_UDEV_RULES
     "Install udev rules for the nuand bladeRF"
