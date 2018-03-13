@@ -4230,6 +4230,12 @@ int CALL_CONV bladerf_write_trigger(struct bladerf *dev,
                                     bladerf_trigger_signal signal,
                                     uint8_t val);
 
+API_EXPORT
+int CALL_CONV bladerf_read_register(struct bladerf *dev, uint8_t reg,uint32_t *val);
+API_EXPORT
+int CALL_CONV bladerf_write_register(struct bladerf *dev, uint8_t reg,uint32_t val);
+
+
 /** @} (End of LOW_LEVEL) */
 
 /**

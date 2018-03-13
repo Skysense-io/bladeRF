@@ -51,6 +51,7 @@
 #include "fx3_fw_log.h"
 #include "trigger.h"
 #include "smb_clock.h"
+#include "ss_register.h"
 
 static int probe(backend_probe_target target_device,
                  struct bladerf_devinfo **devices)
@@ -2239,6 +2240,32 @@ int bladerf_write_trigger(struct bladerf *dev,
 
     MUTEX_LOCK(&dev->ctrl_lock);
     status = trigger_write(dev, module, trigger, val);
+    MUTEX_UNLOCK(&dev->ctrl_lock);
+
+    return status;
+}
+
+/*
+Skysense user register access
+*/
+
+int bladerf_read_register(struct bladerf *dev, uint8_t reg,uint32_t *val)
+{
+    int status;
+
+    MUTEX_LOCK(&dev->ctrl_lock);
+    status = ss_read_user_register(dev, reg, val);
+    MUTEX_UNLOCK(&dev->ctrl_lock);
+
+    return status;
+}
+
+int bladerf_write_register(struct bladerf *dev, uint8_t reg,uint32_t val)
+{
+    int status;
+
+    MUTEX_LOCK(&dev->ctrl_lock);
+    status = ss_write_user_register(dev, reg, val);
     MUTEX_UNLOCK(&dev->ctrl_lock);
 
     return status;

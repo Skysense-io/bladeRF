@@ -290,6 +290,7 @@ set(LIBBLADERF_SOURCE
         src/sync.c
         src/sync_worker.c
         src/trigger.c
+        src/ss_register.c
         src/tuning.c
         src/version.h
         src/version_compat.c

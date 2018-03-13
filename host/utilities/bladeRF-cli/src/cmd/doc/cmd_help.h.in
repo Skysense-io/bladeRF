@@ -865,4 +865,22 @@
   "Prints version information for host software and the current device.\n" \
   "\n" \
 
+#define CLI_CMD_HELPTEXT_ss_trsh \
+  "Usage: ss_trsh [value]\n" \
+  "\n" \
+  "Sets or gets threshold level from FPGA register.\n" \
+  "\n" \
+
+#define CLI_CMD_HELPTEXT_ss_numsamples \
+  "Usage: ss_numsamples [value]\n" \
+  "\n" \
+  "Sets or gets number of samples from FPGA register.\n" \
+  "\n" \
+
+#define CLI_CMD_HELPTEXT_ss_numpretrig \
+  "Usage: ss_pretrig [value]\n" \
+  "\n" \
+  "Sets or gets pretrigger samples from FPGA register.\n" \
+  "\n" \
+
 #endif // BLADERF_CLI_VERSION_H__

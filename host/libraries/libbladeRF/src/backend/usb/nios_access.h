@@ -335,4 +335,9 @@ int nios_read_trigger(struct bladerf *dev, bladerf_module module,
 int nios_write_trigger(struct bladerf *dev, bladerf_module module,
                        bladerf_trigger_signal trigger, uint8_t value);
 
+int nios_read_user_register(struct bladerf *dev, uint8_t reg, uint32_t *value);
+int nios_write_user_register(struct bladerf *dev, uint8_t reg, uint32_t value);
+
+
+
 #endif

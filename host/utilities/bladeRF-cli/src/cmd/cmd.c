@@ -58,6 +58,10 @@ DECLARE_CMD(rx);
 DECLARE_CMD(trigger);
 DECLARE_CMD(tx);
 DECLARE_CMD(version);
+DECLARE_CMD(ss_trsh);
+DECLARE_CMD(ss_numsamples);
+DECLARE_CMD(ss_numpretrig);
+
 
 #define MAX_ARGS    10
 #define COMMENT_CHAR '#'
@@ -100,6 +104,9 @@ static const char *cmd_names_trigger[] = { "trigger", "tr", NULL};
 static const char *cmd_names_tx[] = { "tx", "transmit", NULL };
 static const char *cmd_names_set[] = { "set", "s", NULL };
 static const char *cmd_names_ver[] = { "version", "ver", "v", NULL };
+static const char *cmd_names_ss_trsh[] = { "ss_trsh", "sstrsh", NULL };
+static const char *cmd_names_ss_numsamples[] = { "ss_numsamples", "ss_num", "ssnum", NULL };
+static const char *cmd_names_ss_numpretrig[] = { "ss_numpretrig", "ss_pretrig", NULL };
 
 static const struct cmd cmd_table[] = {
     {
@@ -354,7 +361,34 @@ static const struct cmd cmd_table[] = {
         FIELD_INIT(.requires_fpga, false),
         FIELD_INIT(.allow_while_streaming, true),
     },
-    /* Always terminate the command entry with a completely NULL entry */
+    {
+        FIELD_INIT(.names, cmd_names_ss_trsh),
+        FIELD_INIT(.exec, cmd_ss_trsh),
+        FIELD_INIT(.desc, "FPGA threshold level"),
+        FIELD_INIT(.help, CLI_CMD_HELPTEXT_ss_trsh),
+        FIELD_INIT(.requires_device, true),
+        FIELD_INIT(.requires_fpga, true),
+        FIELD_INIT(.allow_while_streaming, false),
+    },
+    {
+        FIELD_INIT(.names, cmd_names_ss_numsamples),
+        FIELD_INIT(.exec, cmd_ss_numsamples),
+        FIELD_INIT(.desc, "Number of samples to stream after trigger condition"),
+        FIELD_INIT(.help, CLI_CMD_HELPTEXT_ss_numsamples),
+        FIELD_INIT(.requires_device, true),
+        FIELD_INIT(.requires_fpga, true),
+        FIELD_INIT(.allow_while_streaming, false),
+    },
+    {
+        FIELD_INIT(.names, cmd_names_ss_numpretrig),
+        FIELD_INIT(.exec, cmd_ss_numpretrig),
+        FIELD_INIT(.desc, "Number of samples to include before trigger condition met"),
+        FIELD_INIT(.help, CLI_CMD_HELPTEXT_ss_numpretrig),
+        FIELD_INIT(.requires_device, true),
+        FIELD_INIT(.requires_fpga, true),
+        FIELD_INIT(.allow_while_streaming, false),
+    },      
+        /* Always terminate the command entry with a completely NULL entry */
     {
         FIELD_INIT(.names, NULL),
         FIELD_INIT(.exec, NULL),
