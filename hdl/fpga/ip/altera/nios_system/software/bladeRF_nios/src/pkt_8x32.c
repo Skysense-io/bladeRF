@@ -46,15 +46,8 @@ static inline bool perform_read(uint8_t id, uint8_t addr, uint32_t *data)
             return false;
 
         case NIOS_PKT_8x32_TARGET_USR1:
-        	*data = dd_control_reg_read(0);
+        	*data = dd_control_reg_read(addr);
         	break;
-        case NIOS_PKT_8x32_TARGET_USR2:
-            *data = dd_control_reg_read(1);
-            break;
-        case NIOS_PKT_8x32_TARGET_USR3:
-            *data = dd_control_reg_read(2);
-            break;
-
 
         default:
             DBG("Invalid id: 0x%02x\n", id);
@@ -81,14 +74,8 @@ static inline bool perform_write(uint8_t id, uint8_t addr, uint32_t data)
             break;
 
         case NIOS_PKT_8x32_TARGET_USR1:
-        	dd_control_reg_write(0,data);
+        	dd_control_reg_write(addr,data);
         	break;
-        case NIOS_PKT_8x32_TARGET_USR2:
-            dd_control_reg_write(1,data);
-            break;
-        case NIOS_PKT_8x32_TARGET_USR3:
-            dd_control_reg_write(2,data);
-            break;
 
         default:
             DBG("Invalid id: 0x%02x\n", id);

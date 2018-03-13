@@ -108,8 +108,6 @@
 /* IDs 0x80 through 0xff will not be assigned by Nuand. These are reserved
  * for user customizations */
 #define NIOS_PKT_8x32_TARGET_USR1    0x80 //DroneDetection Control0
-#define NIOS_PKT_8x32_TARGET_USR2    0x81 //DroneDetection Control1
-#define NIOS_PKT_8x32_TARGET_USR3    0x82 //DroneDetection Control2
 
 #define NIOS_PKT_8x32_TARGET_USR128  0xff
 
