@@ -37,6 +37,27 @@
 #include <stdbool.h>
 
 
+
+static inline uint32_t dd_control_reg_read(uint8_t addr)
+{
+	if (addr == 0)
+	{
+		return IORD_ALTERA_AVALON_PIO_DATA(DD_CTRL_0_BASE);
+	}
+
+	if (addr == 1)
+	{
+		return IORD_ALTERA_AVALON_PIO_DATA(DD_CTRL_1_BASE);
+	}
+
+	if (addr == 2)
+	{
+		return IORD_ALTERA_AVALON_PIO_DATA(DD_CTRL_2_BASE);
+	}
+
+	return 0;
+}
+
 static inline uint32_t control_reg_read(void)
 {
     return IORD_ALTERA_AVALON_PIO_DATA(CONTROL_BASE);
@@ -45,6 +66,26 @@ static inline uint32_t control_reg_read(void)
 static inline void control_reg_write(uint32_t value)
 {
     IOWR_ALTERA_AVALON_PIO_DATA(CONTROL_BASE, value);
+}
+
+
+static inline void dd_control_reg_write(uint8_t addr, uint32_t value)
+{
+	if (addr == 0)
+	{
+		IOWR_ALTERA_AVALON_PIO_DATA(DD_CTRL_0_BASE, value);
+	}
+
+	if (addr == 1)
+	{
+		IOWR_ALTERA_AVALON_PIO_DATA(DD_CTRL_1_BASE, value);
+	}
+
+	if (addr == 2)
+	{
+		IOWR_ALTERA_AVALON_PIO_DATA(DD_CTRL_2_BASE, value);
+	}
+
 }
 
 static inline uint32_t expansion_port_read(void)

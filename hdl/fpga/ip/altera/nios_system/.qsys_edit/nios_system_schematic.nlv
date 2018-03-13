@@ -1,0 +1,60 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst nios_system.peripheral_spi -pg 1 -lvl 3 -y 590
+preplace inst nios_system.lms_spi -pg 1 -lvl 3 -y 950
+preplace inst nios_system.agc_dc_q_max -pg 1 -lvl 3 -y 1790
+preplace inst nios_system.nios2.cpu -pg 1
+preplace inst nios_system.arbiter_0 -pg 1 -lvl 3 -y 230
+preplace inst nios_system.agc_dc_i_mid -pg 1 -lvl 3 -y 1590
+preplace inst nios_system.xb_gpio -pg 1 -lvl 3 -y 1390
+preplace inst nios_system.opencores_i2c -pg 1 -lvl 3 -y 710
+preplace inst nios_system.nios2.reset_bridge -pg 1
+preplace inst nios_system -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst nios_system.tx_trigger_ctl -pg 1 -lvl 3 -y 2270
+preplace inst nios_system.xb_gpio_dir -pg 1 -lvl 3 -y 1490
+preplace inst nios_system.tx_tamer -pg 1 -lvl 3 -y 1050
+preplace inst nios_system.agc_dc_q_min -pg 1 -lvl 3 -y 1990
+preplace inst nios_system.control -pg 1 -lvl 3 -y 490
+preplace inst nios_system.vctcxo_tamer_0 -pg 1 -lvl 3 -y 1270
+preplace inst nios_system.nios2.clock_bridge -pg 1
+preplace inst nios_system.nios2 -pg 1 -lvl 2 -y 240
+preplace inst nios_system.agc_dc_q_mid -pg 1 -lvl 3 -y 1890
+preplace inst nios_system.rx_trigger_ctl -pg 1 -lvl 3 -y 2090
+preplace inst nios_system.rx_tamer -pg 1 -lvl 3 -y 830
+preplace inst nios_system.iq_corr_rx_phase_gain -pg 1 -lvl 3 -y 30
+preplace inst nios_system.system_clock -pg 1 -lvl 1 -y 190
+preplace inst nios_system.command_uart -pg 1 -lvl 3 -y 370
+preplace inst nios_system.ram -pg 1 -lvl 3 -y 2190
+preplace inst nios_system.jtag_uart -pg 1 -lvl 3 -y 1170
+preplace inst nios_system.agc_dc_i_min -pg 1 -lvl 3 -y 1690
+preplace inst nios_system.agc_dc_i_max -pg 1 -lvl 3 -y 2370
+preplace inst nios_system.iq_corr_tx_phase_gain -pg 1 -lvl 3 -y 130
+preplace netloc FAN_OUT<net_container>nios_system</net_container>(SLAVE)ram.clk1,(SLAVE)nios2.clk,(SLAVE)tx_trigger_ctl.clk,(SLAVE)iq_corr_rx_phase_gain.clk,(SLAVE)vctcxo_tamer_0.clock_sink,(SLAVE)arbiter_0.clock_sink,(SLAVE)peripheral_spi.clk,(SLAVE)control.clk,(SLAVE)rx_tamer.clock_sink,(MASTER)system_clock.clk,(SLAVE)agc_dc_i_min.clk,(SLAVE)jtag_uart.clk,(SLAVE)agc_dc_q_mid.clk,(SLAVE)agc_dc_q_min.clk,(SLAVE)lms_spi.clock_sink,(SLAVE)agc_dc_i_mid.clk,(SLAVE)tx_tamer.clock_sink,(SLAVE)opencores_i2c.clock_sink,(SLAVE)iq_corr_tx_phase_gain.clk,(SLAVE)command_uart.clock,(SLAVE)rx_trigger_ctl.clk,(SLAVE)agc_dc_i_max.clk,(SLAVE)xb_gpio.clk,(SLAVE)xb_gpio_dir.clk,(SLAVE)agc_dc_q_max.clk) 1 1 2 370 180 770
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.rx_tamer,(SLAVE)rx_tamer.conduit_end) 1 0 3 NJ 880 NJ 880 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.agc_dc_i_min,(SLAVE)agc_dc_i_min.external_connection) 1 0 3 NJ 1720 NJ 1720 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.spi,(SLAVE)lms_spi.conduit_end) 1 0 3 NJ 1000 NJ 1000 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)agc_dc_q_min.external_connection,(SLAVE)nios_system.agc_dc_q_min) 1 0 3 NJ 2020 NJ 2020 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.xb_gpio_dir,(SLAVE)xb_gpio_dir.external_connection) 1 0 3 NJ 1520 NJ 1520 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)vctcxo_tamer_0.conduit_end,(SLAVE)nios_system.vctcxo_tamer) 1 0 3 NJ 1320 NJ 1320 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)control.external_connection,(SLAVE)nios_system.gpio) 1 0 3 NJ 520 NJ 520 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.command,(SLAVE)command_uart.rs232) 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc INTERCONNECT<net_container>nios_system</net_container>(SLAVE)iq_corr_tx_phase_gain.s1,(SLAVE)agc_dc_i_mid.s1,(SLAVE)rx_tamer.avalon_slave_0,(MASTER)nios2.instruction_master,(SLAVE)ram.s1,(SLAVE)agc_dc_i_min.s1,(SLAVE)xb_gpio_dir.s1,(SLAVE)agc_dc_q_mid.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)opencores_i2c.bladerf_oc_i2c_master,(SLAVE)agc_dc_i_max.s1,(SLAVE)nios2.debug_mem_slave,(SLAVE)rx_trigger_ctl.s1,(SLAVE)agc_dc_q_max.s1,(SLAVE)arbiter_0.avalon_slave_0,(SLAVE)control.s1,(SLAVE)tx_trigger_ctl.s1,(SLAVE)tx_tamer.avalon_slave_0,(SLAVE)lms_spi.avalon_slave_0,(SLAVE)peripheral_spi.spi_control_port,(SLAVE)agc_dc_q_min.s1,(SLAVE)vctcxo_tamer_0.avalon_slave_0,(SLAVE)xb_gpio.s1,(SLAVE)iq_corr_rx_phase_gain.s1,(MASTER)nios2.data_master,(SLAVE)command_uart.avalon_slave) 1 1 2 410 2420 810
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.oc_i2c,(SLAVE)opencores_i2c.conduit_end) 1 0 3 NJ 760 NJ 760 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)iq_corr_rx_phase_gain.external_connection,(SLAVE)nios_system.correction_rx_phase_gain) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)tx_trigger_ctl.external_connection,(SLAVE)nios_system.tx_trigger_ctl) 1 0 3 NJ 2300 NJ 2300 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)peripheral_spi.external,(SLAVE)nios_system.dac) 1 0 3 NJ 620 NJ 620 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.clk,(SLAVE)system_clock.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)agc_dc_q_mid.external_connection,(SLAVE)nios_system.agc_dc_q_mid) 1 0 3 NJ 1920 NJ 1920 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.xb_gpio,(SLAVE)xb_gpio.external_connection) 1 0 3 NJ 1420 NJ 1420 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.rx_trigger_ctl,(SLAVE)rx_trigger_ctl.external_connection) 1 0 3 NJ 2120 NJ 2120 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.reset,(SLAVE)system_clock.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)arbiter_0.conduit_end,(SLAVE)nios_system.arbiter) 1 0 3 NJ 380 NJ 380 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.agc_dc_i_max,(SLAVE)agc_dc_i_max.external_connection) 1 0 3 NJ 2400 NJ 2400 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.agc_dc_i_mid,(SLAVE)agc_dc_i_mid.external_connection) 1 0 3 NJ 1620 NJ 1620 NJ
+preplace netloc FAN_OUT<net_container>nios_system</net_container>(SLAVE)arbiter_0.interrupt_sender,(SLAVE)rx_tamer.interrupt_sender,(SLAVE)command_uart.interrupt,(SLAVE)tx_tamer.interrupt_sender,(SLAVE)peripheral_spi.irq,(SLAVE)jtag_uart.irq,(MASTER)nios2.irq,(SLAVE)opencores_i2c.interrupt_sender,(SLAVE)vctcxo_tamer_0.interrupt_sender) 1 2 1 850
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.correction_tx_phase_gain,(SLAVE)iq_corr_tx_phase_gain.external_connection) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc FAN_OUT<net_container>nios_system</net_container>(SLAVE)nios2.reset,(SLAVE)arbiter_0.reset,(SLAVE)agc_dc_i_min.reset,(SLAVE)opencores_i2c.reset_sink,(SLAVE)vctcxo_tamer_0.reset_sink,(SLAVE)iq_corr_tx_phase_gain.reset,(SLAVE)lms_spi.reset_sink,(SLAVE)rx_tamer.reset,(SLAVE)agc_dc_i_mid.reset,(SLAVE)rx_trigger_ctl.reset,(SLAVE)xb_gpio_dir.reset,(SLAVE)xb_gpio.reset,(SLAVE)agc_dc_i_max.reset,(SLAVE)jtag_uart.reset,(SLAVE)agc_dc_q_mid.reset,(SLAVE)peripheral_spi.reset,(SLAVE)iq_corr_rx_phase_gain.reset,(SLAVE)tx_tamer.reset,(SLAVE)tx_trigger_ctl.reset,(MASTER)system_clock.clk_reset,(SLAVE)command_uart.reset,(SLAVE)agc_dc_q_max.reset,(SLAVE)ram.reset1,(SLAVE)control.reset,(SLAVE)agc_dc_q_min.reset) 1 1 2 390 200 790
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)agc_dc_q_max.external_connection,(SLAVE)nios_system.agc_dc_q_max) 1 0 3 NJ 1820 NJ 1820 NJ
+preplace netloc EXPORT<net_container>nios_system</net_container>(SLAVE)nios_system.tx_tamer,(SLAVE)tx_tamer.conduit_end) 1 0 3 NJ 1100 NJ 1100 NJ
+levelinfo -pg 1 0 160 1050
+levelinfo -hier nios_system 170 200 530 880 1040
