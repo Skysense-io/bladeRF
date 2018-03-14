@@ -7,8 +7,19 @@
 #define  SS_REG_01 (0x01)
 #define  SS_REG_02 (0x02)
 
-#define  SS_MAX_VAL (0xffffffff)
-#define  SS_MIN_VAL (0x00)
+#define  SS_REG_MIN_VAL (0x00)
+#define  SS_REG_MAX_VAL (0xffffffff)
+
+#define SS_MIN_TRSH (0x000000)
+#define SS_MAX_TRSH (0xffffff)
+
+#define SS_MIN_NUMSAMPLES (0x00)
+#define SS_MAX_NUMSAMPLES (0x07ffff)
+
+#define SS_MIN_PRETRIG (0x00)
+#define SS_MAX_PRETRIG (0x1fff)
+
+#define SS_MASTER_SLAVE (1<<31)
 
 
 #endif /* SS_CMD_H__ */

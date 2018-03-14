@@ -866,7 +866,7 @@
   "\n" \
 
 #define CLI_CMD_HELPTEXT_ss \
-  "Usage: ss [<r0 | r1 | r2>] [value]]\n" \
+  "Usage: ss [<r0 | r1 | r2 | trsh | num | pre | master | slave>] [value]]\n" \
   "\n" \
   "Skysense register access funtions.\n" \
   "\n" \

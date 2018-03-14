@@ -24,6 +24,18 @@
 #include "cmd.h"
 #include "ss_cmd.h"
 
+int getreg(struct cli_state *state, int reg, uint32_t *val){
+    int status,rv = CLI_RET_OK;
+
+    status = bladerf_read_register(state->dev, reg, val);
+
+    if (status<0){
+        state->last_lib_error = status;
+        rv = CLI_RET_LIBBLADERF;            
+    }
+    return rv;
+}
+
 
 int cmd_ss(struct cli_state *state, int argc, char **argv)
 {
@@ -73,10 +85,10 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
             return CLI_RET_INVPARAM;
         }
 
-        value = str2uint( argv[2], SS_MIN_VAL, SS_MAX_VAL, &ok );
+        value = str2uint( argv[2], SS_REG_MIN_VAL, SS_REG_MAX_VAL, &ok );
         if( !ok ) {
             cli_err(state, argv[0],
-                    "Value out of range: %s [0x%08x 0x%08x]", argv[2],SS_MIN_VAL,SS_MAX_VAL);
+                    "Value out of range: %s [0x%08x 0x%08x]", argv[2],SS_REG_MIN_VAL,SS_REG_MAX_VAL);
             return CLI_RET_INVPARAM;
         }
 
@@ -108,6 +120,27 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
         else if ( strcmp(argv[1],"r2") == 0){
             reg = SS_REG_02;
         }
+        else if ( strcmp(argv[1],"trsh") == 0){
+            rv = getreg(state,SS_REG_00,&data);
+            if (!rv) { printf("\n  Current threshold: 0x%08x %u\n\n",data,data); }
+            return rv;
+        }
+        else if ( strcmp(argv[1],"num") == 0){
+            rv = getreg(state,SS_REG_01,&data);            
+            if (!rv) {
+                data &= UINT32_C(0x7ffff);
+                printf("\n  Current number of samples: 0x%08x %u\n\n",data,data);
+            }
+            return rv;
+        }              
+        else if ( strcmp(argv[1],"pre") == 0){
+            rv = getreg(state,SS_REG_01,&data);            
+            if (!rv) {                
+                data = data >> 19;
+                printf("\n  Current pretrig: 0x%08x %u\n\n",data,data);
+            }
+            return rv;
+        } 
         else{
             ok = false;
         }        
