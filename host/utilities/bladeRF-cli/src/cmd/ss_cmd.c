@@ -24,34 +24,11 @@
 #include "cmd.h"
 #include "ss_cmd.h"
 
-int cmd_ss_numsamples(struct cli_state *state, int argc, char **argv)
+
+int cmd_ss(struct cli_state *state, int argc, char **argv)
 {
     /* Valid commands:
-        ss_trsh [value]
-
-        value 0xff00ff00
-    */
-    int rv = CLI_RET_OK;
-    return rv;
-}
-
-int cmd_ss_numpretrig(struct cli_state *state, int argc, char **argv)
-{
-    /* Valid commands:
-        ss_trsh [value]
-
-        value 0xff00ff00
-    */
-    int rv = CLI_RET_OK;
-    return rv;
-}
-
-int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
-{
-    /* Valid commands:
-        ss_trsh [value]
-
-        value 0xff00ff00
+        ss [<r0 | r1 | r2> [value]]
     */
     int rv = CLI_RET_OK;
     int status,reg;
@@ -62,7 +39,7 @@ int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
 
     /* Exit cleanly if no device is attached */
     if (state->dev == NULL) {
-        printf("  cmd_ss_trsh:  No device attached.\n");
+        printf("\n  cmd_ss:  No device attached.\n");
         return 0;
     }
 
@@ -70,28 +47,36 @@ int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
     if (status < 0) {
         state->last_lib_error = status;
         return CLI_RET_LIBBLADERF;
-    } else if (status != 0) {
-        //fpga_loaded = true;
-        //printf("FPGA loaded: %i\n", fpga_loaded);
-        status = 0;
     } 
-
     /* 
     Write value to register
     */
     if( argc == 3 ) {
         /* Parse the value */
-        reg = str2uint( argv[1],SS_REG_00,SS_REG_02,&ok);
+
+        if ( strcmp(argv[1],"r0") == 0){
+            reg = SS_REG_00;
+        }
+        else if ( strcmp(argv[1],"r1") == 0){
+            reg = SS_REG_01;
+        }
+        else if ( strcmp(argv[1],"r2") == 0){
+            reg = SS_REG_02;
+        }
+        else{
+            ok = false;
+        }
 
         if( !ok ) {
             cli_err(state, argv[0],
                     "Invalid register provided (%s)", argv[1]);
             return CLI_RET_INVPARAM;
         }
-        value = str2uint( argv[2], 0, SS_MAX_VAL, &ok );
+
+        value = str2uint( argv[2], SS_MIN_VAL, SS_MAX_VAL, &ok );
         if( !ok ) {
             cli_err(state, argv[0],
-                    "Invalid value provided (%s)", argv[2]);
+                    "Value out of range: %s [0x%08x 0x%08x]", argv[2],SS_MIN_VAL,SS_MAX_VAL);
             return CLI_RET_INVPARAM;
         }
 
@@ -100,7 +85,7 @@ int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
             state->last_lib_error = status;
             rv = CLI_RET_LIBBLADERF;
         }
-        printf("  Wrote 0x%08x to register 0x%02x \n", value, reg);
+        //printf("  Wrote 0x%08x to register 0x%02x \n", value, reg);
 
 
         return rv;
@@ -110,12 +95,26 @@ int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
     Read from register
     */
     if (argc == 2) {
+
         uint32_t data=0;
-        reg = str2uint( argv[1],SS_REG_00,SS_REG_02,&ok);
+        bool ok = true;
+
+        if ( strcmp(argv[1],"r0") == 0){
+            reg = SS_REG_00;
+        }
+        else if ( strcmp(argv[1],"r1") == 0){
+            reg = SS_REG_01;
+        }
+        else if ( strcmp(argv[1],"r2") == 0){
+            reg = SS_REG_02;
+        }
+        else{
+            ok = false;
+        }        
 
         if( !ok ) {
             cli_err(state, argv[0],
-                    "Invalid register provided (%s)", argv[1]);
+                    "Invalid register provided: %s", argv[1]);
             return CLI_RET_INVPARAM;
         }
 
@@ -125,11 +124,32 @@ int cmd_ss_trsh(struct cli_state *state, int argc, char **argv)
             state->last_lib_error = status;
             rv = CLI_RET_LIBBLADERF;            
         }
-        printf("  0x%02x:  0x%08x\n",reg,(unsigned int)data);  
+        printf("\n  0x%02x:  0x%08x\n\n",reg,(unsigned int)data);  
         return rv;      
     }
+    /*
+    Got no arguments, read all registers and print
+    */
+    if (argc==1){
+
+        uint32_t data=0;
+
+        for(int reg=SS_REG_00;reg<=SS_REG_02;reg++){
+
+            status = bladerf_read_register(state->dev, reg, &data);
+
+            if (status<0){
+                state->last_lib_error = status;
+                rv = CLI_RET_LIBBLADERF;            
+            }
+            printf("\n  0x%02x:  0x%08x\n",reg,(unsigned int)data);  
+        }
+        printf("\n");
+        return rv;     
+
+    }
     else {
-        cli_err(state, argv[0], "Invalid number of arguments (%d)\n", argc);
+        cli_err(state, argv[0], "Invalid number of arguments: %d\n", argc);
         rv = CLI_RET_INVPARAM;
     }
     return rv;
