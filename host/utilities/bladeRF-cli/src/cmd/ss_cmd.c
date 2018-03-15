@@ -36,6 +36,18 @@ int getreg(struct cli_state *state, int reg, uint32_t *val){
     return rv;
 }
 
+int setreg(struct cli_state *state, int reg, uint32_t val){
+    int status,rv = CLI_RET_OK;
+
+    status = bladerf_write_register(state->dev, reg, val);
+
+    if (status<0){
+        state->last_lib_error = status;
+        rv = CLI_RET_LIBBLADERF;            
+    }
+    return rv;
+}
+
 
 int cmd_ss(struct cli_state *state, int argc, char **argv)
 {
@@ -44,7 +56,7 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
     */
     int rv = CLI_RET_OK;
     int status,reg;
-    bool ok;
+    bool ok=true;
     //bool fpga_loaded = false;
     //int (*f)(struct bladerf *, uint8_t, uint8_t) = NULL;
     unsigned int value;
@@ -64,6 +76,7 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
     Write value to register
     */
     if( argc == 3 ) {
+        uint32_t data = 0;
         /* Parse the value */
 
         if ( strcmp(argv[1],"r0") == 0){
@@ -75,13 +88,63 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
         else if ( strcmp(argv[1],"r2") == 0){
             reg = SS_REG_02;
         }
+
+
+        else if ( strcmp(argv[1],"trsh") == 0){
+            value = str2uint( argv[2], SS_MIN_TRSH, SS_MAX_TRSH, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                    "Value out of range: %s [0x%08x 0x%08x]", argv[2],SS_MIN_TRSH,SS_MAX_TRSH);
+                return CLI_RET_INVPARAM;
+            }            
+            rv = setreg(state,SS_REG_00,value);
+            return rv;
+        }
+        else if ( strcmp(argv[1],"num") == 0){
+            value = str2uint( argv[2], SS_MIN_NUMSAMPLES, SS_MAX_NUMSAMPLES, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                     "Value out of range: %s [0x%08x 0x%08x]", argv[2],SS_MIN_NUMSAMPLES,SS_MAX_NUMSAMPLES);
+                return CLI_RET_INVPARAM;
+            }
+            // w ^= (-f ^ w) & m;
+
+            rv = getreg(state,SS_REG_01,&data);
+            data ^= value & SS_MASK_NUMSAMPLES;
+            rv = setreg(state,SS_REG_01,data);
+            return rv;
+        }              
+        else if ( strcmp(argv[1],"pre") == 0){
+            value = str2uint( argv[2], SS_MIN_PRETRIG, SS_MAX_PRETRIG, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                        "Value out of range: %s [0x%08x 0x%08x]", argv[2],SS_MIN_PRETRIG,SS_MAX_PRETRIG);
+                return CLI_RET_INVPARAM;
+            }
+            rv = getreg(state,SS_REG_01,&data);
+            data ^=  (value<<19) & SS_MASK_PRETRIG;
+            rv = setreg(state,SS_REG_01,data);                    
+            return rv;
+        }
+        else if ( strcmp(argv[1],"master") == 0){
+            value = str2uint( argv[2], 0, 1, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                        "Value out of range: %s [%1i %1i]", argv[2],0,1);
+                return CLI_RET_INVPARAM;
+            }
+            rv = getreg(state,SS_REG_02,&data);
+            data ^= (value<<31) & SS_MASTER_SLAVE;
+            rv = setreg(state,SS_REG_02,data);                  
+            return rv;
+        }
         else{
             ok = false;
         }
 
         if( !ok ) {
             cli_err(state, argv[0],
-                    "Invalid register provided (%s)", argv[1]);
+                    "Invalid parameter provided %s", argv[1]);
             return CLI_RET_INVPARAM;
         }
 
@@ -109,7 +172,6 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
     if (argc == 2) {
 
         uint32_t data=0;
-        bool ok = true;
 
         if ( strcmp(argv[1],"r0") == 0){
             reg = SS_REG_00;
@@ -140,7 +202,19 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
                 printf("\n  Current pretrig: 0x%08x %u\n\n",data,data);
             }
             return rv;
-        } 
+        }
+        else if ( strcmp(argv[1],"master") == 0){
+            rv = getreg(state,SS_REG_02,&data);            
+            if (!rv) {                
+                if(data & SS_MASTER_SLAVE){
+                    printf("\n  Master mode\n\n");
+                }
+                else{
+                    printf("\n  Slave mode\n\n");
+                }
+            }
+            return rv;
+        }         
         else{
             ok = false;
         }        

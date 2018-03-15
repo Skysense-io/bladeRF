@@ -14,10 +14,12 @@
 #define SS_MAX_TRSH (0xffffff)
 
 #define SS_MIN_NUMSAMPLES (0x00)
-#define SS_MAX_NUMSAMPLES (0x07ffff)
+#define SS_MAX_NUMSAMPLES (0x0007ffff)
+#define SS_MASK_NUMSAMPLES (0x0007ffff)
 
 #define SS_MIN_PRETRIG (0x00)
-#define SS_MAX_PRETRIG (0x1fff)
+#define SS_MAX_PRETRIG (0x00001fff)
+#define SS_MASK_PRETRIG (0xfff80000)
 
 #define SS_MASTER_SLAVE (1<<31)
 
