@@ -63,7 +63,7 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
 
     /* Exit cleanly if no device is attached */
     if (state->dev == NULL) {
-        printf("\n  cmd_ss:  No device attached.\n");
+        printf("\n\n  cmd_ss:  No device attached.\n");
         return 0;
     }
 
@@ -88,8 +88,6 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
         else if ( strcmp(argv[1],"r2") == 0){
             reg = SS_REG_02;
         }
-
-
         else if ( strcmp(argv[1],"trsh") == 0){
             value = str2uint( argv[2], SS_MIN_TRSH, SS_MAX_TRSH, &ok );
             if( !ok ) {
@@ -108,9 +106,8 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
                 return CLI_RET_INVPARAM;
             }
             // w ^= (-f ^ w) & m;
-
             rv = getreg(state,SS_REG_01,&data);
-            data ^= value & SS_MASK_NUMSAMPLES;
+            data = (value & SS_MASK_NUMSAMPLES) | (data & ~SS_MAX_NUMSAMPLES);
             rv = setreg(state,SS_REG_01,data);
             return rv;
         }              
@@ -122,7 +119,7 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
                 return CLI_RET_INVPARAM;
             }
             rv = getreg(state,SS_REG_01,&data);
-            data ^=  (value<<19) & SS_MASK_PRETRIG;
+            data = ( (value<<19)  & SS_MASK_PRETRIG ) | (data & ~SS_MASK_PRETRIG);
             rv = setreg(state,SS_REG_01,data);                    
             return rv;
         }
@@ -134,7 +131,7 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
                 return CLI_RET_INVPARAM;
             }
             rv = getreg(state,SS_REG_02,&data);
-            data ^= (value<<31) & SS_MASTER_SLAVE;
+            data =  ( (value<<31) & SS_MASTER_SLAVE ) | ( data & ~SS_MASTER_SLAVE );
             rv = setreg(state,SS_REG_02,data);                  
             return rv;
         }
