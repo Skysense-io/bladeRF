@@ -1,0 +1,19 @@
+
+*Create local install dirctory
+
+>> mkdir ~/local
+
+*Create build directory
+
+>> mkdir ~/src/bladeRF/host/build
+>> cd ~/src/bladeRF/host/build
+
+*Build
+
+>> cmake .. -CMAKE_INSTALL_PREFIX=~/local
+>> make install
+
+*Run
+
+export PATH=~/local/bin:$PATH
+export LD_LIBRARY_PATH=~/local/lib:LD_LIBRARY_PATH

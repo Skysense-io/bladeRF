@@ -1,0 +1,498 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"SS_",
+				"SS_MASK_NUMSAMPLES"
+			],
+			[
+				"uint",
+				"uint32_t"
+			],
+			[
+				"SS",
+				"SS_MAX_NUMSAMPLES"
+			],
+			[
+				"n",
+				"n"
+			],
+			[
+				"uni",
+				"uint32_t"
+			],
+			[
+				"SS_REG_",
+				"SS_REG_00"
+			],
+			[
+				"API",
+				"API_EXPORT"
+			],
+			[
+				"cmd_ss_num",
+				"cmd_names_ss_numpretrig"
+			],
+			[
+				"cmd_names_ss_nu",
+				"cmd_names_ss_numpretrig"
+			],
+			[
+				"cmd_names_ss",
+				"cmd_names_ss_trsh"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.h",
+			"settings":
+			{
+				"buffer_size": 549,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.c",
+			"settings":
+			{
+				"buffer_size": 8142,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/common/src/conversions.c",
+			"settings":
+			{
+				"buffer_size": 14617,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/utilities/bladeRF-cli/src/cmd/cmd.c",
+			"settings":
+			{
+				"buffer_size": 19749,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/utilities/bladeRF-cli/src/common.h",
+			"settings":
+			{
+				"buffer_size": 7733,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h.in",
+			"settings":
+			{
+				"buffer_size": 32617,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/magnus/src/bladeRF"
+	],
+	"file_history":
+	[
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/ADDING_COMMANDS.txt",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h.in",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/cmd.h",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/include/libbladeRF.h",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/bladerf.c",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/backend/backend.h",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/backend/usb/nios_access.h",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/CMakeLists.txt",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/ss_register.c",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/trigger.c",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/ss_register.h",
+		"/home/magnus/src/bladeRF/fpga_common/include/nios_pkt_8x32.h",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/backend/usb/usb.c",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/backend/usb/nios_access.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/version.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/cmd.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/poke.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/peekpoke.h",
+		"/home/magnus/src/bladeRF/hdl/fpga/ip/altera/nios_system/software/bladeRF_nios/src/libbladeRF_nios_compat.h",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/CMakeLists.txt",
+		"/home/magnus/src/bladeRF/host/common/src/conversions.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/printset.c",
+		"/home/magnus/src/bladeRF/CMakeLists.txt",
+		"/home/magnus/src/bladeRF/host/misc/udev/CMakeLists.txt",
+		"/home/magnus/src/bladeRF/host/build/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/input/input.c",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/capabilities.h",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/main.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/version.h.in",
+		"/home/magnus/src/gnuradio/src/bladeRF/host/libraries/libbladeRF/src/backend/usb/nios_access.c",
+		"/home/magnus/src/gnuradio/src/bladeRF/host/libraries/libbladeRF/src/backend/usb/nios_access.h"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"read_trigger",
+			"nios_8x32_write",
+			"trigger",
+			"versio",
+			"write_trigger",
+			"nios_8x32_write",
+			"NIOS_PKT_8x32_TARGET_CONTROL",
+			"nios_8x32_read",
+			"INSTALL_UDEV_RULES",
+			"LIBBLADERF_API_VERSION",
+			"VERSION_INFO_PATCH",
+			"BLADERF_CLI_VERSION",
+			"bladerf_priv.h"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 549,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								441,
+								441
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6903,
+								6903
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3166.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "host/common/src/conversions.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10325,
+								10325
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6105.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "host/utilities/bladeRF-cli/src/cmd/cmd.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19749,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								327,
+								327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6256.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "host/utilities/bladeRF-cli/src/common.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7733,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h.in",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 32617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								31207,
+								31207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 13723.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.54987012987,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "bladerf.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 265.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
