@@ -131,10 +131,66 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
                 return CLI_RET_INVPARAM;
             }
             rv = getreg(state,SS_REG_02,&data);
-            data =  ( (value<<31) & SS_MASTER_SLAVE ) | ( data & ~SS_MASTER_SLAVE );
+            if (value){
+                data |=  SS_MASTER_SLAVE;
+            }
+            else{
+                data &= ~SS_MASTER_SLAVE;
+            }
             rv = setreg(state,SS_REG_02,data);                  
             return rv;
         }
+        else if ( strcmp(argv[1],"slope") == 0){
+            value = str2uint( argv[2], 0, 1, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                        "Value out of range: %s [%1i %1i]", argv[2],0,1);
+                return CLI_RET_INVPARAM;
+            }
+            rv = getreg(state,SS_REG_02,&data);
+            if (value){
+                data |=  SS_SLOPE;
+            }
+            else{
+                data &= ~SS_SLOPE;
+            }
+            rv = setreg(state,SS_REG_02,data); 
+            return rv;
+        }
+        else if ( strcmp(argv[1],"enable") == 0){
+            value = str2uint( argv[2], 0, 1, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                        "Value out of range: %s [%1i %1i]", argv[2],0,1);
+                return CLI_RET_INVPARAM;
+            }
+            rv = getreg(state,SS_REG_02,&data);
+            if (value){
+                data |=  SS_ENABLE;
+            }
+            else{
+                data &= ~SS_ENABLE;
+            }
+            rv = setreg(state,SS_REG_02,data);                  
+            return rv;
+        }
+        else if ( strcmp(argv[1],"dap") == 0){
+            value = str2uint( argv[2], 0, 1, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                        "Value out of range: %s [%1i %1i]", argv[2],0,1);
+                return CLI_RET_INVPARAM;
+            }
+            rv = getreg(state,SS_REG_02,&data);
+            if (value){
+                data |=  SS_DAP;
+            }
+            else{
+                data &= ~SS_DAP;
+            }
+            rv = setreg(state,SS_REG_02,data); 
+            return rv;
+        }                        
         else{
             ok = false;
         }
@@ -212,6 +268,42 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
             }
             return rv;
         }         
+        else if ( strcmp(argv[1],"slope") == 0){
+            rv = getreg(state,SS_REG_02,&data);            
+            if (!rv) {                
+                if(data & SS_SLOPE){
+                    printf("\n  Positive slope\n\n");
+                }
+                else{
+                    printf("\n  Negative slope\n\n");
+                }
+            }
+            return rv;
+        }  
+        else if ( strcmp(argv[1],"enable") == 0){
+            rv = getreg(state,SS_REG_02,&data);            
+            if (!rv) {                
+                if(data & SS_ENABLE){
+                    printf("\n  Enabled\n\n");
+                }
+                else{
+                    printf("\n  Disabled\n\n");
+                }
+            }
+            return rv;
+        }  
+        else if ( strcmp(argv[1],"dap") == 0){
+            rv = getreg(state,SS_REG_02,&data);            
+            if (!rv) {                
+                if(data & SS_DAP){
+                    printf("\n  Trigger condition deasserted during pretrigger window\n\n");
+                }
+                else{
+                    printf("\n  Trigger condition ignored during pretrigger\n\n");
+                }
+            }
+            return rv;
+        }                          
         else{
             ok = false;
         }        

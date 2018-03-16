@@ -21,7 +21,11 @@
 #define SS_MAX_PRETRIG  (0x00001fff)
 #define SS_MASK_PRETRIG (0xfff80000)
 
-#define SS_MASTER_SLAVE (1<<31)
+
+#define SS_SLOPE        (1<<0)
+#define SS_ENABLE       (1<<1)
+#define SS_MASTER_SLAVE (1<<2)
+#define SS_DAP          (1<<3)
 
 
 #endif /* SS_CMD_H__ */
