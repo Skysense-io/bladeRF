@@ -26,6 +26,8 @@
 #define SS_ENABLE       (1<<1)
 #define SS_MASTER_SLAVE (1<<2)
 #define SS_DAP          (1<<3)
+#define SS_ONESHOT      (1<<4)
+#define SS_ONESHOT_ARM  (1<<5)
 
 
 #endif /* SS_CMD_H__ */

@@ -190,7 +190,45 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
             }
             rv = setreg(state,SS_REG_02,data); 
             return rv;
-        }                        
+        }  
+        else if ( strcmp(argv[1],"oneshot") == 0){
+            value = str2uint( argv[2], 0, 1, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                        "Value out of range: %s [%1i %1i]", argv[2],0,1);
+                return CLI_RET_INVPARAM;
+            }
+            rv = getreg(state,SS_REG_02,&data);
+            if (value){
+                data |=  SS_ONESHOT;
+            }
+            else{
+                data &= ~SS_ONESHOT;
+            }
+            rv = setreg(state,SS_REG_02,data); 
+            return rv;
+        } 
+        else if ( strcmp(argv[1],"arm") == 0){
+            value = str2uint( argv[2], 0, 1, &ok );
+            if( !ok ) {
+                cli_err(state, argv[0],
+                        "Value out of range: %s [%1i %1i]", argv[2],0,1);
+                return CLI_RET_INVPARAM;
+            }
+            rv = getreg(state,SS_REG_02,&data);
+            if (value==1){
+                printf("data: 0x%08x\n",data);
+                
+                data &= ~SS_ONESHOT_ARM; //Assert LO -> HI transition
+                printf("data: 0x%08x\n",data);
+                rv = setreg(state,SS_REG_02,data); 
+
+                data |=  SS_ONESHOT_ARM;
+                printf("data: 0x%08x\n",data);
+                rv = setreg(state,SS_REG_02,data); 
+            }
+            return rv;
+        }                                       
         else{
             ok = false;
         }
@@ -303,7 +341,31 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
                 }
             }
             return rv;
-        }                          
+        }   
+        else if ( strcmp(argv[1],"oneshot") == 0){
+            rv = getreg(state,SS_REG_02,&data);            
+            if (!rv) {                
+                if(data & SS_ONESHOT){
+                    printf("\n  One shot trigger active\n\n");
+                }
+                else{
+                    printf("\n  One shot trigger inactive\n\n");
+                }
+            }
+            return rv;
+        } 
+        else if ( strcmp(argv[1],"arm") == 0){
+            rv = getreg(state,SS_REG_02,&data);            
+            if (!rv) {                
+                if(data & SS_ONESHOT_ARM){
+                    printf("\n  One shot trigger armed\n\n");
+                }
+                else{
+                    printf("\n  One shot trigger not armed\n\n");
+                }
+            }
+            return rv;
+        }         
         else{
             ok = false;
         }        
