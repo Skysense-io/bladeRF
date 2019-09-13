@@ -29,11 +29,11 @@
 
 clear;               %Clear workspace variables
 
-Fs = 2e6;            %Sample rate of 2 Msps (500ns sample period)
-samps_per_symb = 8;  %Samples per symbol
+Fs = 4e6;            %Sample rate of 2 Msps (500ns sample period)
+samps_per_symb = 128;  %Samples per symbol
 h = pi/2;            %Phase modulation index (phase deviation per symbol)
 					 %Note: preamble has been optimized for h = pi/2
-dec_factor = 2;      %Amount to decimate by when performing correlation
+dec_factor = 1;      %Amount to decimate by when performing correlation
                      %with preamble
 
 %32 bit training sequence

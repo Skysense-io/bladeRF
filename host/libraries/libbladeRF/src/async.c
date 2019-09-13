@@ -210,8 +210,7 @@ void async_deinit_stream(struct bladerf_stream *stream)
         log_debug("%s called with NULL stream\n", __FUNCTION__);
         return;
     }
-
-    while(stream->state != STREAM_DONE && stream->state != STREAM_IDLE) {
+    while(stream->state != STREAM_DONE && stream->state != STREAM_IDLE ) {
         log_verbose( "Stream not done...\n" );
         usleep(1000000);
     }

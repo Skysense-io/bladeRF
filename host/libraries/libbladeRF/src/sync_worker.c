@@ -263,6 +263,7 @@ void sync_worker_deinit(struct sync_worker *w,
 
     log_verbose("%s: Requesting worker %p to stop...\n", __FUNCTION__, w);
 
+
     sync_worker_submit_request(w, SYNC_WORKER_STOP);
 
     if (lock != NULL && cond != NULL) {
@@ -274,12 +275,15 @@ void sync_worker_deinit(struct sync_worker *w,
     status = sync_worker_wait_for_state(w, SYNC_WORKER_STATE_STOPPED, 3000);
 
     if (status != 0) {
-        log_warning("Timed out while stopping worker. Canceling thread.\n");
+        //log_warning("%s Exit status: %s\n",__FUNCTION__, strerror(status));
+        //log_warning("Timed out while stopping worker. Canceling thread.\n");
         pthread_cancel(w->thread);
+        //log_warning("Thread cancelled!.\n");        
     }
 
     pthread_join(w->thread, NULL);
     log_verbose("%s: Worker joined.\n", __FUNCTION__);
+    //log_warning("%s: Worker joined.\n", __FUNCTION__);
 
     async_deinit_stream(w->stream);
 
@@ -308,9 +312,10 @@ int sync_worker_wait_for_state(struct sync_worker *w, sync_worker_state state,
         if (status != 0) {
             return BLADERF_ERR_UNEXPECTED;
         }
-
+        //log_warning("Start time: %i %lu\n",timeout_abs.tv_sec,timeout_abs.tv_nsec);
         timeout_abs.tv_sec += timeout_sec;
         timeout_abs.tv_nsec += (timeout_ms % 1000) * 1000 * 1000;
+        //log_warning("Timeout time: %i %lu\n",timeout_abs.tv_sec,timeout_abs.tv_nsec);
 
         if (timeout_abs.tv_nsec >= nsec_per_sec) {
             timeout_abs.tv_sec += timeout_abs.tv_nsec / nsec_per_sec;
@@ -319,14 +324,17 @@ int sync_worker_wait_for_state(struct sync_worker *w, sync_worker_state state,
 
         MUTEX_LOCK(&w->state_lock);
         status = 0;
+        //log_warning("%s: state:%i status:%i\n",__FUNCTION__,state,status);
         while (w->state != state && status == 0) {
             status = pthread_cond_timedwait(&w->state_changed,
                                             &w->state_lock,
                                             &timeout_abs);
         }
         MUTEX_UNLOCK(&w->state_lock);
+        //log_warning("%s exited with %s\n",__FUNCTION__,strerror(status));
 
-    } else {
+    } 
+    else {
         MUTEX_LOCK(&w->state_lock);
         while (w->state != state) {
             log_verbose(": Waiting for state change, current = %d\n", w->state);
@@ -337,7 +345,7 @@ int sync_worker_wait_for_state(struct sync_worker *w, sync_worker_state state,
     }
 
     if (status != 0) {
-        log_debug("%s: Wait on state change failed: %s\n",
+        log_warning("%s: Wait on state change failed: %s\n",
                    __FUNCTION__, strerror(status));
 
         if (status == ETIMEDOUT) {

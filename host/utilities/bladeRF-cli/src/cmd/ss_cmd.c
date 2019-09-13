@@ -217,14 +217,14 @@ int cmd_ss(struct cli_state *state, int argc, char **argv)
             }
             rv = getreg(state,SS_REG_02,&data);
             if (value==1){
-                printf("data: 0x%08x\n",data);
-                
+                //printf("data: 0x%08x\n",data);
+
                 data &= ~SS_ONESHOT_ARM; //Assert LO -> HI transition
-                printf("data: 0x%08x\n",data);
+                //printf("data: 0x%08x\n",data);
                 rv = setreg(state,SS_REG_02,data); 
 
                 data |=  SS_ONESHOT_ARM;
-                printf("data: 0x%08x\n",data);
+                //printf("data: 0x%08x\n",data);
                 rv = setreg(state,SS_REG_02,data); 
             }
             return rv;

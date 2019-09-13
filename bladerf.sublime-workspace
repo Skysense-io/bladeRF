@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"log",
+				"log_warning"
+			],
+			[
 				"SS_",
 				"SS_MASK_NUMSAMPLES"
 			],
@@ -48,28 +52,62 @@
 	"buffers":
 	[
 		{
-			"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.h",
+			"file": "host/libraries/libbladeRF/src/sync_worker.c",
 			"settings":
 			{
-				"buffer_size": 673,
+				"buffer_size": 17055,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.c",
+			"file": "host/libraries/libbladeRF/include/libbladeRF.h",
 			"settings":
 			{
-				"buffer_size": 12193,
+				"buffer_size": 154071,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/libraries/libbladeRF/src/async.c",
+			"settings":
+			{
+				"buffer_size": 6891,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "host/common/src/conversions.c",
+			"contents": "Searching 1498 files for \"bladerf_close\"\n\n/home/magnus/src/bladeRF/host/build/output/bladeRF-cli:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/bladeRF-fsk:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/bladeRF-fsk_test_config:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/bladeRF-fsk_test_suite:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF.so.1:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_async:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_config_file:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_ctrl:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_freq_hop:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_open:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_peripheral_timing:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_quick_retune:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_repeated_stream:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_repeater:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_rx_discont:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_scheduled_retune:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_sync:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_timestamps:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_tune_timing:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/libbladeRF_test_unused_sync:\n    <binary>\n\n/home/magnus/src/bladeRF/host/build/output/test_dc_calibration:\n    <binary>\n\n/home/magnus/src/bladeRF/host/common/test/dc_calibration/src/main.c:\n  191  \n  192  out:\n  193:     bladerf_close(dev);\n  194  \n  195      if (status != 0) {\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/doxygen/tuning.dox:\n  165  a configuration change. This can be achieved via bladerf_cancel_scheduled_retunes().\n  166  \n  167: bladerf_open(), bladerf_open_with_devinfo(), and bladerf_close() all cancel\n  168  pending re-tunes.  This is done to ensure that the device does not unexpectedly\n  169  retune as the result of \"stale\" requests from previous usage.\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples/boilerplate.c:\n  176  \n  177  out:\n  178:     bladerf_close(dev);\n  179      return status;\n  180  }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples/example_common.c:\n  148  out:\n  149      if (status != 0) {\n  150:         bladerf_close(dev);\n  151          return NULL;\n  152      } else {\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples/open_via_serial.c:\n  139  \n  140      if (dev) {\n  141:         bladerf_close(dev);\n  142      }\n  143  \n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples/quick_tune.c:\n  103  \n  104      bladerf_enable_module(dev, BLADERF_MODULE_TX, false);\n  105:     bladerf_close(dev);\n  106      return status;\n  107  }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples/sync_rx_meta.c:\n  127      /* Deinitialize and free resources */\n  128      free(samples);\n  129:     bladerf_close(dev);\n  130  }\n  131  \n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples/sync_rxtx.c:\n  253          status = sync_rx_example(dev);\n  254          printf(\"Closing the device...\\n\");\n  255:         bladerf_close(dev);\n  256      }\n  257  \n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples/sync_tx_meta.c:\n  166      /* Deinitialize and free resources */\n  167      free(samples);\n  168:     bladerf_close(dev);\n  169  }\n  170  /** [tx_meta_deinit] */\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/include/libbladeRF.h:\n  310   */\n  311  API_EXPORT\n  312: void CALL_CONV bladerf_close(struct bladerf *device);\n  313  \n  314  /**\n  ...\n 1236   * Cancel all pending scheduled retune operations for the specified module.\n 1237   *\n 1238:  * This will be done automatically during bladerf_close() to ensure that\n 1239   * previously queued retunes do not continue to occur after closing and then\n 1240   * later re-opening a device.\n ....\n 3388   * independently.\n 3389   *\n 3390:  * Memory allocated by this function will be deallocated when bladerf_close()\n 3391   * is called.\n 3392   *\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/bladerf.c:\n  241              /* Cancel any pending re-tunes that may have been left over as the\n  242               * result of a user application crashing or forgetting to call\n  243:              * bladerf_close() */\n  244              status = tuning_cancel_scheduled(dev, BLADERF_MODULE_RX);\n  245              if (status != 0) {\n  ...\n  265  error:\n  266      if (status < 0) {\n  267:         bladerf_close(dev);\n  268      } else {\n  269          *opened_device = dev;\n  ...\n  291  }\n  292  \n  293: void bladerf_close(struct bladerf *dev)\n  294  {\n  295      int status;\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_bindings/matlab/bladeRF.m:\n  286          function constructor_cleanup(obj)\n  287              if obj.initialized == false\n  288:                 calllib('libbladeRF', 'bladerf_close', obj.device);\n  289                  obj.device = [];\n  290              end\n  ...\n  777                  obj.rx.stop;\n  778                  obj.tx.stop;\n  779:                 calllib('libbladeRF', 'bladerf_close', obj.device);\n  780              end\n  781          end\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_bindings/matlab/libbladeRF_proto.m:\n   93  fcns.thunkname{fcnNum}='int32voidPtrcstringThunk';fcns.name{fcnNum}='bladerf_open'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'bladerfPtrPtr', 'cstring'};fcnNum=fcnNum+1;\n   94  \n   95: % void bladerf_close ( struct bladerf * device );\n   96: fcns.thunkname{fcnNum}='voidvoidPtrThunk';fcns.name{fcnNum}='bladerf_close'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}=[]; fcns.RHS{fcnNum}={'bladerfPtr'};fcnNum=fcnNum+1;\n   97  \n   98  % void bladerf_set_usb_reset_on_open ( _Bool enabled );\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_async/main.c:\n  224      } else if (status == 0) {\n  225          fprintf(stderr, \"Error: FPGA is not loaded.\\n\");\n  226:         bladerf_close(dev);\n  227          return EXIT_FAILURE;\n  228      }\n  ...\n  232          fprintf(stderr, \"Failed to set frequency: %s\\n\",\n  233                  bladerf_strerror(status));\n  234:         bladerf_close(dev);\n  235          return EXIT_FAILURE;\n  236      }\n  ...\n  240          fprintf(stderr, \"Failed to set sample rate: %s\\n\",\n  241                  bladerf_strerror(status));\n  242:         bladerf_close(dev);\n  243          return EXIT_FAILURE;\n  244      }\n  ...\n  260          fprintf(stderr, \"Failed to init stream: %s\\n\",\n  261                  bladerf_strerror(status));\n  262:         bladerf_close(dev);\n  263          return EXIT_FAILURE;\n  264      }\n  ...\n  269              fprintf(stderr, \"Failed to populated test data\\n\");\n  270              bladerf_deinit_stream(stream);\n  271:             bladerf_close(dev);\n  272              return EXIT_FAILURE;\n  273          }\n  ...\n  278              fprintf(stderr, \"Failed to open samples.txt: %s\\n\", strerror(errno));\n  279              bladerf_deinit_stream(stream);\n  280:             bladerf_close(dev);\n  281              return EXIT_FAILURE;\n  282          }\n  ...\n  288                  bladerf_strerror(status));\n  289          bladerf_deinit_stream(stream);\n  290:         bladerf_close(dev);\n  291          return EXIT_FAILURE;\n  292      }\n  ...\n  305  \n  306      bladerf_deinit_stream(stream);\n  307:     bladerf_close(dev);\n  308  \n  309      if (test_data.fout) {\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_config_file/src/main.c:\n  278  \n  279  /**\n  280:  * Surrogate bladerf_close handler\n  281   *\n  282   * @param       dev         Device handle\n  283   */\n  284: void bladerf_close(struct bladerf *dev)\n  285  {\n  286      if (dev) {\n  ...\n  395          printf(\"\\n\");\n  396  \n  397:         bladerf_close(dev);\n  398      }\n  399  \n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_ctrl/src/main.c:\n  270  out:\n  271      if (dev) {\n  272:         bladerf_close(dev);\n  273      }\n  274  \n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_freq_hop/main.c:\n  313  \n  314  \n  315:     bladerf_close(dev);\n  316  \n  317  error_no_dev:\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_open/src/main.c:\n  103          } else {\n  104              usleep(wait);\n  105:             bladerf_close(dev);\n  106              printf(\"Iteration %u complete.\\n\", i + 1);\n  107          }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_peripheral_timing/main.c:\n  218  \n  219  out:\n  220:     bladerf_close(dev);\n  221      return status;\n  222  }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_quick_retune/main.c:\n  169      status = run_test(dev);\n  170  \n  171:     bladerf_close(dev);\n  172      return status;\n  173  }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_repeated_stream/src/main.c:\n  290  \n  291  out:\n  292:     bladerf_close(params.device);\n  293      free(options);\n  294      return status;\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_repeater/src/repeater.c:\n  552  \n  553  init_device_error:\n  554:     bladerf_close(repeater->device);\n  555      repeater->device = NULL;\n  556  \n  ...\n  655          bladerf_enable_module(repeater->device, BLADERF_MODULE_TX, false);\n  656  \n  657:         bladerf_close(repeater->device);\n  658          repeater->device = NULL;\n  659      }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_rx_discont/src/main.c:\n  286  \n  287  out:\n  288:     bladerf_close(dev);\n  289      return status;\n  290  }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_scheduled_retune/src/hop_set.c:\n  245  \n  246  out:\n  247:     bladerf_close(dev);\n  248      hop_set_free(h);\n  249      return status;\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_scheduled_retune/src/main.c:\n  343  \n  344  out:\n  345:     bladerf_close(dev);\n  346      hop_set_free(hops);\n  347      return status;\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_sync/src/test.c:\n  189  initialize_device_out:\n  190      if (status != 0) {\n  191:         bladerf_close(dev);\n  192          dev = NULL;\n  193      }\n  ...\n  403      }\n  404  \n  405:     bladerf_close(dev);\n  406  \n  407      if (p->in_file != NULL && tx_args.status != 0) {\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_timestamps/src/main.c:\n  365  out:\n  366      if (dev != NULL) {\n  367:         bladerf_close(dev);\n  368      }\n  369  \n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_tune_timing/main.c:\n  304  \n  305  out:\n  306:     bladerf_close(dev);\n  307      return status;\n  308  }\n\n/home/magnus/src/bladeRF/host/libraries/libbladeRF_test/test_unused_sync/main.c:\n   37      }\n   38  \n   39:     bladerf_close(dev);\n   40      return status;\n   41  }\n\n/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/CHANGELOG:\n  172  v0.10.6 (2014-03-07)\n  173  --------------------------------\n  174:  * Removed bladerf_close() call after bladerf_device_reset()\n  175      - This function call would yield an attempt to close a stale device handle,\n  176        causing BSoDs in Windows.\n\n/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/common.c:\n  160  \n  161          if (s->dev) {\n  162:             bladerf_close(s->dev);\n  163          }\n  164  \n\n/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/main.c:\n  346                         \"A power cycle is required for this to take effect.\\n\");\n  347              }\n  348:             bladerf_close(state->dev);\n  349              state->dev = NULL;\n  350          }\n\n/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/open.c:\n   39  \n   40      if (state->dev) {\n   41:         bladerf_close(state->dev);\n   42      }\n   43  \n\n/home/magnus/src/bladeRF/host/utilities/bladeRF-fsk/c/src/config.c:\n  350      if (config->bladerf_dev != NULL) {\n  351          pr_dbg(\"\\tClosing bladerf.\\n\");\n  352:         bladerf_close(config->bladerf_dev);\n  353          config->bladerf_dev = NULL;\n  354      }\n\n/home/magnus/src/bladeRF/host/utilities/bladeRF-fsk/c/src/test_suite.c:\n  145          link_close(link2);\n  146          DEBUG_MSG(\"Closing bladeRFs\\n\");\n  147:         bladerf_close(dev1);\n  148:         bladerf_close(dev2);\n  149          printf(\"------------ENDING LINK TEST--------------\\n\");\n  150          return status;\n  ...\n  300          phy_close(phy2);\n  301          DEBUG_MSG(\"\\tClosing bladeRFs\\n\");\n  302:         bladerf_close(dev1);\n  303:         bladerf_close(dev2);\n  304          printf(\"------------ENDING PHY TEST---------------\\n\");\n  305          return ret;\n  ...\n  370          phy_close(phy);\n  371          DEBUG_MSG(\"\\tClosing bladeRF\\n\");\n  372:         bladerf_close(dev);\n  373          printf(\"------------ENDING PHY RECEIVE TEST---------------\\n\");\n  374          return ret;\n\n98 matches across 56 files\n",
 			"settings":
 			{
-				"buffer_size": 14617,
+				"buffer_size": 13243,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "host/libraries/libbladeRF/doc/examples/example_common.c",
+			"settings":
+			{
+				"buffer_size": 5097,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/libraries/libbladeRF/doc/examples/sync_rxtx.c",
+			"settings":
+			{
+				"buffer_size": 7919,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "host/libraries/libbladeRF/src/sync_worker.h",
+			"settings":
+			{
+				"buffer_size": 3975,
 				"line_ending": "Unix"
 			}
 		},
@@ -79,14 +117,6 @@
 			{
 				"buffer_size": 19749,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h",
-			"settings":
-			{
-				"buffer_size": 32632,
 				"line_ending": "Unix"
 			}
 		},
@@ -102,7 +132,7 @@
 			"file": "host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h.in",
 			"settings":
 			{
-				"buffer_size": 32632,
+				"buffer_size": 32648,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -142,19 +172,31 @@
 	[
 		"/home/magnus/src/bladeRF",
 		"/home/magnus/src/bladeRF/host",
-		"/home/magnus/src/bladeRF/host/utilities",
-		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli",
-		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src",
-		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd",
-		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/doc"
+		"/home/magnus/src/bladeRF/host/libraries",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/doc/examples",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src"
 	],
 	"file_history":
 	[
+		"/home/magnus/src/bladeRF/host/common/src/conversions.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/xb.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/xb.h",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/xb.c",
+		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/bladerf.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/ss_cmd.h",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/xb100.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/rxtx.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/rx.c",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/ss_cmd.c",
+		"/home/magnus/src/bladeRF/fx3_firmware/src/cyfxbladeRF.h",
+		"/home/magnus/src/bladeRF/host/build/common/include/host_config.h",
+		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h",
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/ADDING_COMMANDS.txt",
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h.in",
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/cmd.h",
 		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/include/libbladeRF.h",
-		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/bladerf.c",
 		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/backend/backend.h",
 		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/backend/usb/nios_access.h",
 		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/CMakeLists.txt",
@@ -170,12 +212,10 @@
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/peekpoke.h",
 		"/home/magnus/src/bladeRF/hdl/fpga/ip/altera/nios_system/software/bladeRF_nios/src/libbladeRF_nios_compat.h",
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/CMakeLists.txt",
-		"/home/magnus/src/bladeRF/host/common/src/conversions.c",
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/printset.c",
 		"/home/magnus/src/bladeRF/CMakeLists.txt",
 		"/home/magnus/src/bladeRF/host/misc/udev/CMakeLists.txt",
 		"/home/magnus/src/bladeRF/host/build/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h",
-		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h",
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/input/input.c",
 		"/home/magnus/src/bladeRF/host/libraries/libbladeRF/src/capabilities.h",
 		"/home/magnus/src/bladeRF/host/utilities/bladeRF-cli/src/main.c",
@@ -200,6 +240,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"bladerf_close",
+			"SYNC_WORKER_STATE_STOPPED",
+			"dma",
+			"gpif",
+			"BLADE_GPIF_16_32BIT_CONF_SELECT",
+			"cmd_rx",
+			"arm",
 			"read_trigger",
 			"nios_8x32_write",
 			"trigger",
@@ -230,32 +277,34 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.h",
+					"file": "host/libraries/libbladeRF/src/sync_worker.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 673,
+						"buffer_size": 17055,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								646,
-								646
+								8819,
+								8819
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6759.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -263,19 +312,49 @@
 				},
 				{
 					"buffer": 1,
-					"file": "host/utilities/bladeRF-cli/src/cmd/ss_cmd.c",
+					"file": "host/libraries/libbladeRF/include/libbladeRF.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12193,
+						"buffer_size": 154071,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6867,
-								6867
+								151291,
+								151291
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 74606.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "host/libraries/libbladeRF/src/async.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6891,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6555,
+								6555
 							]
 						],
 						"settings":
@@ -285,85 +364,285 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2506.0,
+						"translation.y": 2216.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "host/common/src/conversions.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14617,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10325,
-								10325
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6105.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
 					"buffer": 3,
-					"file": "host/utilities/bladeRF-cli/src/cmd/cmd.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19749,
+						"buffer_size": 13243,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										1868,
+										1881
+									],
+									[
+										2158,
+										2171
+									],
+									[
+										2452,
+										2465
+									],
+									[
+										2647,
+										2660
+									],
+									[
+										2844,
+										2857
+									],
+									[
+										3048,
+										3061
+									],
+									[
+										3270,
+										3283
+									],
+									[
+										3496,
+										3509
+									],
+									[
+										3704,
+										3717
+									],
+									[
+										3889,
+										3902
+									],
+									[
+										4095,
+										4108
+									],
+									[
+										4357,
+										4370
+									],
+									[
+										4661,
+										4674
+									],
+									[
+										4859,
+										4872
+									],
+									[
+										4971,
+										4984
+									],
+									[
+										5259,
+										5272
+									],
+									[
+										5475,
+										5488
+									],
+									[
+										5867,
+										5880
+									],
+									[
+										5978,
+										5991
+									],
+									[
+										6358,
+										6371
+									],
+									[
+										6562,
+										6575
+									],
+									[
+										6768,
+										6781
+									],
+									[
+										6970,
+										6983
+									],
+									[
+										7185,
+										7198
+									],
+									[
+										7426,
+										7439
+									],
+									[
+										7620,
+										7633
+									],
+									[
+										7756,
+										7769
+									],
+									[
+										7942,
+										7955
+									],
+									[
+										8046,
+										8059
+									],
+									[
+										8170,
+										8183
+									],
+									[
+										8339,
+										8352
+									],
+									[
+										8486,
+										8499
+									],
+									[
+										8690,
+										8703
+									],
+									[
+										8908,
+										8921
+									],
+									[
+										9100,
+										9113
+									],
+									[
+										9276,
+										9289
+									],
+									[
+										9490,
+										9503
+									],
+									[
+										9678,
+										9691
+									],
+									[
+										9880,
+										9893
+									],
+									[
+										10060,
+										10073
+									],
+									[
+										10256,
+										10269
+									],
+									[
+										10487,
+										10500
+									],
+									[
+										10585,
+										10598
+									],
+									[
+										10815,
+										10828
+									],
+									[
+										10969,
+										10982
+									],
+									[
+										11138,
+										11151
+									],
+									[
+										11343,
+										11356
+									],
+									[
+										11642,
+										11655
+									],
+									[
+										11882,
+										11895
+									],
+									[
+										12085,
+										12098
+									],
+									[
+										12310,
+										12323
+									],
+									[
+										12572,
+										12585
+									],
+									[
+										12608,
+										12621
+									],
+									[
+										12833,
+										12846
+									],
+									[
+										12869,
+										12882
+									],
+									[
+										13089,
+										13102
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								327,
-								327
+								2548,
+								2548
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 51.0,
+						"translation.y": 1122.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h",
+					"file": "host/libraries/libbladeRF/doc/examples/example_common.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 32632,
+						"buffer_size": 5097,
 						"regions":
 						{
 						},
@@ -376,19 +655,115 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 13890.0,
+						"translation.y": 1938.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "host/libraries/libbladeRF/doc/examples/sync_rxtx.c",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 7919,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2398,
+								2398
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 935.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "host/libraries/libbladeRF/src/sync_worker.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3975,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								523,
+								523
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "host/utilities/bladeRF-cli/src/cmd/cmd.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19749,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16324,
+								16324
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6937.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "host/utilities/bladeRF-cli/src/common.h",
 					"semi_transient": false,
 					"settings":
@@ -414,24 +789,24 @@
 						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "host/utilities/bladeRF-cli/src/cmd/doc/cmd_help.h.in",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 32632,
+						"buffer_size": 32648,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								32519,
-								32519
+								32535,
+								32535
 							]
 						],
 						"settings":
@@ -441,10 +816,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 13961.0,
+						"translation.y": 13729.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]

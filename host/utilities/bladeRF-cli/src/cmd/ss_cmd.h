@@ -18,7 +18,7 @@
 #define SS_MASK_NUMSAMPLES (0x0007ffff)
 
 #define SS_MIN_PRETRIG  (0x00)
-#define SS_MAX_PRETRIG  (0x00001fff)
+#define SS_MAX_PRETRIG  (0x000003ff)
 #define SS_MASK_PRETRIG (0xfff80000)
 
 
