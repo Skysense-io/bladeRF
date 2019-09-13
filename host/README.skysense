@@ -10,7 +10,7 @@
 
 *Build
 
->> cmake .. -DCMAKE_INSTALL_PREFIX=~/local
+>> cmake -DCMAKE_INSTALL_PREFIX=~/local ..
 >> make install
 
 *Run
